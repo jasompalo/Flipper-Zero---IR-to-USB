@@ -5,7 +5,9 @@
 #include <infrared_worker.h>
 #include <input/input.h>
 
+//original idea by @jasompalo
 //refactor by @pilot2254
+
 //flipperzero screen res: 128x64px
 //FontPrimary: ~12px tall where y is the baseline
 //FontSecondary: ~8px tall
