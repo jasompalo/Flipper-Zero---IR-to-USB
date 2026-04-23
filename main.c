@@ -14,6 +14,7 @@ typedef struct {
     FuriMessageQueue* event_queue;
     bool running;
     bool signal_received;
+    uint32_t last_press_ms;
 } AppState;
 
 static void draw_callback(Canvas* canvas, void* ctx) {
@@ -43,6 +44,10 @@ static void ir_received_callback(void* ctx, InfraredWorkerSignal* signal) {
     if(!infrared_worker_signal_is_decoded(signal)) return;
 
     //flash led
+    uint32_t now = furi_get_tick();
+    if(now - state->last_press_ms < furi_ms_to_ticks(350)) return;
+    state->last_press_ms = now;
+
     furi_hal_light_set(LightGreen, 255);
     furi_delay_ms(50);
     furi_hal_light_set(LightGreen, 0);
