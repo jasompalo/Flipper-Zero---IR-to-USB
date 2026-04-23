@@ -6,4 +6,5 @@ App(
     requires=["gui", "infrared"],
     stack_size=2 * 1024,
     fap_category="Misc",
+    fap_icon="ir_to_hid_10px.png",
 )
